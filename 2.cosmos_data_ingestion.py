@@ -577,7 +577,11 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 	"""Parse CLI arguments."""
 
 	parser = argparse.ArgumentParser(description=__doc__)
-	parser.add_argument("--input", default="data/venmo_help_docs.json", help="Path to JSON payload")
+	parser.add_argument(
+		"--input",
+		default=os.environ.get("SCRAPE_OUTPUT_PATH", "data/venmo_help_docs.json"),
+		help="Path to JSON payload",
+	)
 	parser.add_argument(
 		"--database",
 		default=os.environ.get("AZURE_COSMOS_DATABASE_NAME", os.environ.get("COSMOS_DATABASE", "venmo")),
