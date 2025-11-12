@@ -1,4 +1,4 @@
-# PP-RAG-Scraper
+# Simple Comsos RAG Web Scraper
 
 Utilities for scraping Venmo Help Center content, chunking and embedding it with Azure OpenAI, loading it into Azure Cosmos DB for MongoDB vCore (with vector search), and then probing or chatting against the resulting vector store.
 
