@@ -156,7 +156,13 @@ def load_documents(output_path: Path):
 
 if __name__ == "__main__":
     start_url = os.getenv("SCRAPE_START_URL")
-    output_path = Path(os.getenv("SCRAPE_OUTPUT_PATH"))
+    if not start_url:
+        raise RuntimeError("Environment variable SCRAPE_START_URL is required.")
+
+    output_path_env = os.getenv("SCRAPE_OUTPUT_PATH")
+    if not output_path_env:
+        raise RuntimeError("Environment variable SCRAPE_OUTPUT_PATH is required.")
+    output_path = Path(output_path_env)
 
     if output_path.exists():
         docs = load_documents(output_path)
